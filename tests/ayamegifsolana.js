@@ -31,7 +31,7 @@ const main = async () => {
   console.log('👀 GIF Count', account.totalGifs.toString())
 
   // Call add_gif!
-  await program.rpc.addGif({
+  await program.rpc.addGif('https://c.tenor.com/SAmNsaoO3HEAAAAC/hololive-%E3%83%9B%E3%83%AD%E3%83%A9%E3%82%A4%E3%83%96.gif', {
     accounts: {
       baseAccount: baseAccount.publicKey,
     }
@@ -40,6 +40,9 @@ const main = async () => {
   // Get the account again to see what changed.
   account = await program.account.baseAccount.fetch(baseAccount.publicKey);
   console.log('👀 GIF Count', account.totalGifs.toString())
+
+  // Access gif_list on the account!
+  console.log('👀 GIF List', account.gifList)
 
 }
 
